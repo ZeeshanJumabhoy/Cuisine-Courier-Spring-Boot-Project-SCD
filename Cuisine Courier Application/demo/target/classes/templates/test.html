@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <!-- ... Existing head content ... -->
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+    // Remove item from cart
+    function removeItem(index) {
+      $.ajax({
+        type: "POST",
+        url: "/removeItem",
+        data: { index: index },
+        success: function(response) {
+          // Remove the row from the table
+          $("#row_" + index).remove();
+
+          // Display updated cart
+          updateCartDisplay();
+        },
+        error: function(error) {
+          console.error("Error removing item from cart:", error);
+        }
+      });
+    }
+
+    // Function to update the cart display
+    function updateCartDisplay() {
+      // You can add logic here to refresh the cart display
+      // For simplicity, let's reload the page after updating the cart
+      location.reload();
+
+      function updateTotal(totalPrice) {
+        $("#totalPrice").text(totalPrice);
+      }
+    }
+  </script>
+</head>
+<body>
+<!-- ... Existing body content ... -->
+
+<table border="1">
+  <thead>
+  <tr>
+    <th>Item Name</th>
+    <th>Item Price</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="cartItem, stat : ${cartItems}" th:id="'row_' + ${stat.index}">
+    <td th:text="${cartItem.itemName}"></td>
+    <td th:text="${cartItem.itemPrice}"></td>
+    <td>
+      <!-- Add a button to remove the item -->
+      <button type="button" th:onclick="'removeItem(' + ${stat.index} + ')'" >Remove</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<!-- ... Existing body content ... -->
+</body>
+</html>

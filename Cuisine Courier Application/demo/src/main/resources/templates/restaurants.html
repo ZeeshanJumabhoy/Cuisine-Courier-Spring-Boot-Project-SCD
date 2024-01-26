@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="inkoop.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap" rel="stylesheet">
+
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing:border-box;
+        }
+        body{
+            height:950px;
+        }
+        nav{
+            height:100%;
+            width:80px;
+            margin-left: 50px;
+            margin-top: 0px;
+        }
+        .logo{
+            color: #573b8a;
+            font-size:40px;
+            padding-bottom: 150px;
+            margin-bottom: 60px;
+            font-family: 'Playfair Display', serif;
+        }
+        nav ul li{
+            margin-bottom:20px;
+            flex-direction:column;
+            font-size:17px;
+        }
+        a:hover{
+            font-weight: bold;
+        }
+        ul{
+            margin-top: 70px;
+            list-style-type: none;
+        }
+        a{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-decoration: none;
+            color:darkgray;
+            font-size: 20px;
+            padding:25px 0px 25px 0px;
+        }
+        button{
+            background-color: tomato;
+            color: #eeeeee;
+            width:170px;
+            height:65px;
+            border: none;
+            border-radius: 30px;
+            font-size: 19px;
+            margin-top: 50px;
+        }
+
+        .checkbtn{
+            font-size: 50px;
+            color:red;
+            margin-left: 5px;
+            margin-top: 70px;
+            cursor: pointer;
+            display: none;
+            float: right;
+        }
+        .icon1{
+            width:50%;
+            float: left;
+        }
+        .icon2{
+            width:50%;
+            float: right;
+        }
+        #check{
+            display: none;
+            float: left;
+            margin-left: 5px;
+            margin-top: 70px;
+        }
+        #check1{
+            display: none;
+            float: right;
+        }
+        .h1{
+            font-family: 'Playfair Display', serif;
+            color: #573b8a;
+            font-size: 80px;
+        }
+        .p{
+            color:darkgray;
+            font-size: 20px;
+            line-height: 1.5;
+        }
+        .div{
+            margin-top: 20px;
+            height:0px;
+            width: 0px;
+            background-color: red;
+        }
+        div.img1{
+            margin-bottom: 15px;
+            width:210px;
+            background-size: cover;
+            border-radius: 10px 10px 10px 10px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            height:280px;
+            margin-left: 28px;
+        }
+        div.text{
+            border-radius:10px 10px 10px 10px;
+            text-align: center;
+            padding: 10px 5px;
+            font-weight: bold;
+            font-size: 22px;
+            font-family: 'Rubik', sans-serif;
+        }
+        img{
+            width:100%;
+            border-radius:50%;
+            padding: 25px 25px 20px 25px;
+            height:200px;
+        }
+        .flex{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            margin-right: 0px;
+        }
+        .grid{
+            display:grid;
+            margin-top: 100px;
+            grid-column-gap: initial;
+            grid-gap:90px;
+            padding: 20px;
+            grid-template-columns: auto auto auto auto;
+        }
+        .header{
+            grid-column:1/4;
+            grid-row:1;
+        }
+        .menu{
+            grid-column:1/2;
+            grid-row:2;
+        }
+        .main-heading{
+            grid-column: 2/4;
+            grid-row:1;
+            margin-right: 10px;
+        }
+        .sub-heading{
+            grid-column: 4/4;
+            grid-row: 1;
+            padding-left: 110px;
+            width: 370px;
+        }
+        .btn{
+            grid-column:2/2;
+            grid-row:3;
+
+        }
+
+        .heading{
+            display: inline-grid;
+            margin-top: 100px;
+            margin-left: 100px;
+        }
+        @media(max-width:952px){
+            label.logo{
+                font-size: 30px;
+                padding-left: 30px;
+            }
+            nav ul li a{
+                font-size: 16px;
+            }
+        }
+        @media(max-width:858px){
+            .checkbtn{
+                display: block;
+            }
+            ul{
+                position: fixed;
+                width: 100%;
+                height:100vh;
+                top:80px;
+                left:0;
+                text-align: center;
+                display:none;
+            }
+            nav ul li{
+                display: block;
+            }
+            nav ul li a{
+                font-size: 20px;
+            }
+            .logo{
+                position:absolute;
+                top: 40px;
+                right: 40%;
+                left: 40%;
+                font-size: 33px;
+            }
+            button{
+                display:none;
+            }
+            #cart{
+                position:absolute;
+                right: 20px;
+                top: 40px;
+                font-size:35px;
+            }
+            #icon-bar{
+                position:absolute;
+                left:30px;
+                top: 40px;
+                font-size:35px;
+            }
+            #Delivery{
+                display: none;
+            }
+            .h1{
+                position: absolute;
+                left:30px !important;
+                font-size: 35px;
+            }
+            .p{
+                position: absolute;
+                margin-bottom: 100px;
+                top:800px;
+                left:30px !important;
+                padding-bottom: 100px;
+                font-size: 20px;
+                width: 400px;
+            }
+            .div{
+                position: absolute;
+                margin-bottom: 100px;
+                top:890px;
+                left:30px !important;
+                width:90px;
+                height: 3px;
+            }
+            .flex{
+                display:grid;
+                position: absolute;
+                min-height: 40px;
+                min-width: 20px;
+                left: 10px;
+            }
+            .i1 {
+                grid-column:1/2 ;
+                grid-row:1 ;
+
+            }
+            .i2{
+                grid-column:2/3 ;
+                grid-row:1 ;
+            }
+            .i3{
+                grid-column:1/2 ;
+                grid-row: 2;
+            }
+            .i4{
+                grid-column:2/3 ;
+                grid-row:2 ;
+            }
+            .i5{
+                display: none;
+            }
+            div.img1{
+                margin-bottom: 15px;
+                width:160px;
+                background-size: cover;
+                border-radius: 10px 10px 10px 10px;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                height:200px;
+                margin-left: 28px;
+            }
+            div.text{
+                border-radius:10px 10px 10px 10px;
+                text-align: center;
+                padding: 10px 5px;
+                font-weight: bold;
+                font-size: 15px;
+            }
+            img{
+                width:100%;
+                border-radius:50%;
+                padding: 25px 25px 20px 25px;
+                height:150px;
+            }
+        }
+
+
+        .card:hover .content {
+            transform: rotateY(180deg);
+        }
+
+        @keyframes rotation_481 {
+            0% {
+                transform: rotateZ(0deg);
+            }
+
+            0% {
+                transform: rotateZ(360deg);
+            }
+        }
+
+
+
+        .front .front-content {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .front-content .badge {
+            background-color: #00000055;
+            padding: 2px 10px;
+            border-radius: 10px;
+            backdrop-filter: blur(2px);
+            width: fit-content;
+        }
+
+
+        .title p {
+            width: 50%;
+        }
+
+
+        .front .img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        @keyframes floating {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        .card {
+            width: 190px;
+            height: 254px;
+            border-radius: 50px;
+            background: #e0e0e0;
+            box-shadow: 20px 20px 60px #bebebe,
+            -20px -20px 60px #ffffff;
+        }
+        .card-header{
+            color: red;
+            position: center;
+            text-align: center;
+        }
+        .card-body{
+            text-align: center;
+            font-family: -apple-system;
+        }
+
+    </style>
+
+</head>
+<body>
+<div class="grid">
+    <section>
+        <nav><div class="inline">
+            <div class="icon1"> <input type="checkbox" id="check">
+                <label for="check" class="checkbtn">
+                    <i id="icon-bar" class=" fa fa-bars"></i>
+                </label></div><div class="grid-item header">
+            <lable class="logo"><strong>Cuisine <strong id="Delivery">Courier</strong> </strong></lable>
+
+        </div>
+            <div class="menu">
+                <ul>
+
+                    <li><a th:href="@{/dashboard}">Cuisines</a></li>
+
+                    <li><a href="#">About</a></li>
+
+                </ul></div>
+
+
+        </nav>
+    </section>
+
+
+    <section>
+        <div class="heading">
+            <div class="grid-item main-heading">
+                <h1 class="h1">Partnered Restaurants</h1>
+            </div>
+            <div class="grid-item sub-heading">
+                <p class="p" th:text="${name}"></p>
+                <div class="div"></div>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div th:each="restaurant : ${restaurants}" class="card">
+                <br><br><br>
+                &nbsp;&nbsp;&nbsp;
+                <div class="card-header">
+                    &nbsp;&nbsp;&nbsp;  <h3 th:text="${restaurant.name}"></h3>
+                </div>
+                <div class="card-body">
+                    <p th:text="${'City: ' + restaurant.city}"></p>
+                    <p th:text="${'Type: ' + restaurant.type}"></p>
+                    <p th:text="${'Speciality: ' + restaurant.speciality}"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+</body>
+</html>

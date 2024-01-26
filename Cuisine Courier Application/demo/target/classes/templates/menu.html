@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="inkoop.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap" rel="stylesheet">
+
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+
+        }
+        body{
+            height:950px;
+        }
+        nav{
+            height:100%;
+            width:80px;
+            margin-left: 50px;
+            margin-top: 40px;
+        }
+        .logo{
+            color: #573b8a;
+            font-size:40px;
+            padding-bottom: 150px;
+            margin-bottom: 60px;
+            font-family: 'Playfair Display', serif;
+        }
+        nav ul li{
+            margin-bottom:20px;
+            flex-direction:column;
+            font-size:17px;
+        }
+        a:hover{
+            font-weight: bold;
+        }
+        ul{
+            margin-top: 70px;
+            list-style-type: none;
+        }
+        a{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-decoration: none;
+            color:darkgray;
+            font-size: 20px;
+            padding:25px 0px 25px 0px;
+        }
+
+        .about{
+            text-decoration-line: line-through;
+            text-decoration-color: red;
+        }
+        .checkbtn{
+            font-size: 50px;
+            color:red;
+            margin-left: 5px;
+            margin-top: 70px;
+            cursor: pointer;
+            display: none;
+            float: right;
+        }
+        .icon1{
+            width:50%;
+            float: left;
+        }
+        .icon2{
+            width:50%;
+            float: right;
+        }
+        #check{
+            display: none;
+            float: left;
+            margin-left: 5px;
+            margin-top: 70px;
+        }
+        #check1{
+            display: none;
+            float: right;
+        }
+        .h1{
+            font-family: 'Playfair Display', serif;
+            color: #573b8a;
+            font-size: 80px;
+        }
+        .p{
+            color:darkgray;
+            font-size: 20px;
+            line-height: 1.5;
+        }
+        .div{
+            margin-top: 20px;
+            height:0px;
+            width: 0px;
+            background-color: red;
+        }
+        div.img1{
+            margin-bottom: 15px;
+            width:210px;
+            background-size: cover;
+            border-radius: 10px 10px 10px 10px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            height:280px;
+            margin-left: 28px;
+        }
+        div.text{
+            border-radius:10px 10px 10px 10px;
+            text-align: center;
+            padding: 10px 5px;
+            font-weight: bold;
+            font-size: 22px;
+            font-family: 'Rubik', sans-serif;
+        }
+        img{
+            width:100%;
+            border-radius:50%;
+            padding: 25px 25px 20px 25px;
+            height:200px;
+        }
+        .flex{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            margin-right: 0px;
+        }
+        .grid{
+            display:grid;
+            grid-gap:30px;
+            padding: 20px;
+            grid-template-columns: auto auto auto auto auto;
+            justify-content: space-around;
+            margin-top: 50px;
+        }
+        .header{
+            grid-column:1/7;
+            grid-row:1;
+        }
+        .menu{
+            grid-column:1/2;
+            grid-row:2;
+        }
+        .main-heading{
+            grid-column: 2/5;
+            grid-row:2;
+            margin-right: 10px;
+        }
+        .sub-heading{
+            grid-column: 5/7;
+            grid-row: 2;
+            padding-left: 110px;
+            width: 370px;
+        }
+        .btn{
+            grid-column:1/2;
+            grid-row:3;
+
+        }
+        .images{
+            grid-column:2/7;
+            grid-row:3;
+            margin-left: 100px;
+            margin-top: 30px;
+        }
+        .heading{
+            display: inline-grid;
+            margin-top: 160px;
+            margin-left: 100px;
+        }
+        @media(max-width:952px){
+            label.logo{
+                font-size: 30px;
+                padding-left: 30px;
+            }
+            nav ul li a{
+                font-size: 16px;
+            }
+        }
+        @media(max-width:858px){
+            .checkbtn{
+                display: grid;
+            }
+            ul{
+                position: fixed;
+                width: 100%;
+                height:100vh;
+                top:80px;
+                left:0;
+                text-align: center;
+                display:none;
+            }
+            nav ul li{
+                display: grid;
+            }
+            nav ul li a{
+                font-size: 20px;
+            }
+            .logo{
+                position:absolute;
+                top: 40px;
+                right: 40%;
+                left: 40%;
+                font-size: 33px;
+            }
+            button{
+                display:none;
+            }
+            #cart{
+                position:absolute;
+                right: 20px;
+                top: 40px;
+                font-size:35px;
+            }
+            #icon-bar{
+                position:absolute;
+                left:30px;
+                top: 40px;
+                font-size:35px;
+            }
+            #Delivery{
+                display: none;
+            }
+            .h1{
+                position: absolute;
+                left:30px !important;
+                font-size: 35px;
+            }
+            .p{
+                position: absolute;
+                margin-bottom: 100px;
+                top:800px;
+                left:30px !important;
+                padding-bottom: 100px;
+                font-size: 20px;
+                width: 400px;
+            }
+            .div{
+                position: absolute;
+                margin-bottom: 100px;
+                top:890px;
+                left:30px !important;
+                width:90px;
+                height: 3px;
+            }
+
+
+            div.img1 {
+                margin-bottom: 15px;
+                width: 100%;
+                max-width: 210px;
+                background-size: cover;
+                border-radius: 10px 10px 10px 10px;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                height: 280px;
+                margin-left: 28px;
+            }
+            div.text{
+                border-radius:10px 10px 10px 10px;
+                text-align: center;
+                padding: 10px 5px;
+                font-weight: bold;
+                font-size: 15px;
+            }
+            img{
+                width:100%;
+                border-radius:50%;
+                padding: 25px 25px 20px 25px;
+                height:150px;
+            }
+        }
+
+        .card {
+            width: 190px;
+            height: 254px;
+            padding: .8em;
+            background: #f5f5f5;
+            position: relative;
+            overflow: visible;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        }
+
+        .card-img {
+            background-color: #ffcaa6;
+            height: 40%;
+            width: 100%;
+            border-radius: .5rem;
+            transition: .3s ease;
+        }
+
+        .card-info {
+            padding-top: 10%;
+        }
+
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .card-footer {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 10px;
+            border-top: 1px solid #ddd;
+        }
+
+        /*Text*/
+        .text-title {
+            font-weight: 900;
+            font-size: 1.2em;
+            line-height: 1.5;
+        }
+
+        .text-body {
+            font-size: .9em;
+            padding-bottom: 10px;
+        }
+
+        /*Button*/
+        .card-button {
+            border: 1px solid #252525;
+            display: flex;
+            padding: .3em;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: .3s ease-in-out;
+        }
+
+        /*Hover*/
+        .card-img:hover {
+            transform: translateY(-25%);
+            box-shadow: rgba(226, 196, 63, 0.25) 0px 13px 47px -5px, rgba(180, 71, 71, 0.3) 0px 8px 16px -8px;
+        }
+
+        .card-button:hover {
+            border: 1px solid #ffcaa6;
+            background-color: #ffcaa6;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="grid">
+    <section>
+        <nav><div class="inline">
+            <div class="icon1"> <input type="checkbox" id="check">
+                <label for="check" class="checkbtn">
+                    <i id="icon-bar" class=" fa fa-bars"></i>
+                </label></div><div class="grid-item header">
+            <lable class="logo"><strong>Cuisine <strong id="Delivery">Courier</strong> </strong></lable>
+
+        </div>
+            <div class="menu">
+                <ul>
+
+                    <li><a th:href="@{/dashboard}">Cuisines</a></li>
+                    <li><a href="/restaurants">Restaurants</a></li>
+                    <li><a href="#">About</a></li>
+
+                </ul></div>
+
+        </nav>
+    </section>
+    <section>
+        <div class="heading">
+            <div class=" grid-item main-heading">
+                <h1 class="h1">Menu for <span th:text="${foodType}"></span></h1></div>
+            <div class=" grid-item sub-heading">
+
+
+                <div class="div"></div></div></div>
+
+
+            <div class="grid">
+
+                    <div th:if="${menuItems}" th:each="menuItem : ${menuItems}"  class="card">
+                            <div class="card-img"></div>
+                            <div class="card-info">
+                                <p class="text-title" th:text="${menuItem.itemname}"> </p>
+                                <p class="text-body" th:text="${menuItem.iteminfo}"></p>
+                            </div>
+                        <div class="card-footer">
+                            <form method="post" th:action="@{/addToCart}">
+                                <input type="hidden" name="itemName" th:value="${menuItem.itemname}" />
+                                <input type="hidden" name="itemPrice" th:value="${menuItem.itemprice}" />
+                                <button type="submit">Add to Cart</button>
+                            </form>
+                            <span class="text-title" th:text="${menuItem.itemprice}"></span>
+                        </div>
+                    </div>
+
+</div>
+            </div>
+    </section>
+</div>
+</body>
+</html>
